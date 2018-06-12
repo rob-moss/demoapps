@@ -1,0 +1,158 @@
+version: '3'
+
+volumes:
+  project:
+    external: true
+  appdynamics:
+    external: true
+
+services:
+  project:
+    container_name: project
+    build:
+      context: ADCapital-Project
+    image: appddemo/adcapital-project
+    volumes:
+    - project:/project
+
+  adcapitaldb:
+    container_name: adcapitaldb
+    hostname: adcapitaldb
+    image: mysql
+    # logging:
+    #   driver: "none"
+    environment:
+    - "MYSQL_ROOT_PASSWORD=welcome1"
+    ports:
+    - "3306:3306"
+
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:3.5.4-management
+    # logging:
+    #   driver: "none"
+    environment:
+    - "RABBITMQ_DEFAULT_USER=guest"
+    - "RABBITMQ_DEFAULT_PASS=guest"
+    ports:
+    - "5672:5672"
+
+  rest:
+    container_name: rest
+    hostname: rest
+    build:
+      context: ./ADCapital-Tomcat
+    image: appddemo/adcapital-tomcat
+    volumes:
+    - project:/project
+    - appdynamics:/appdynamics
+    # logging:
+    #   driver: "none"
+    env_file: ./docker-compose.env
+    environment:
+    - "ROLE=rest"
+    - "APPDYNAMICS_AGENT_NODE_NAME=Rest"
+    - "APPDYNAMICS_AGENT_TIER_NAME=Authentication-Service"
+    depends_on:
+    - "adcapitaldb"
+    - "rabbitmq"
+    ports:
+    - "8081:8080"
+
+  portal:
+    container_name: portal
+    hostname: portal
+    build:
+      context: ./ADCapital-Tomcat
+    image: appddemo/adcapital-tomcat
+    volumes:
+    - project:/project
+    - appdynamics:/appdynamics
+    # logging:
+    #   driver: "none"
+    env_file: ./docker-compose.env
+    environment:
+    - "ROLE=portal"
+    - "APPDYNAMICS_AGENT_NODE_NAME=Portal"
+    - "APPDYNAMICS_AGENT_TIER_NAME=Portal-Service"
+    depends_on:
+    - "adcapitaldb"
+    - "rabbitmq"
+    ports:
+    - "8082:8080"
+
+  verification:
+    container_name: verification
+    hostname: verification
+    build:
+      context: ./ADCapital-Tomcat
+    image: appddemo/adcapital-tomcat
+    volumes:
+    - project:/project
+    - appdynamics:/appdynamics
+    # logging:
+    #   driver: "none"
+    env_file: ./docker-compose.env
+    environment:
+    - "ROLE=verification"
+    - "APPDYNAMICS_AGENT_NODE_NAME=Verification"
+    - "APPDYNAMICS_AGENT_TIER_NAME=Verification-Service"
+    depends_on:
+    - "adcapitaldb"
+    - "rabbitmq"
+    ports:
+    - "8083:8080"
+
+  processor:
+    container_name: processor
+    hostname: processor
+    build:
+      context: ./ADCapital-Tomcat
+    image: appddemo/adcapital-tomcat
+    volumes:
+    - project:/project
+    - appdynamics:/appdynamics
+    # logging:
+    #   driver: "none"
+    env_file: ./docker-compose.env
+    environment:
+    - "ROLE=processor"
+    - "APPDYNAMICS_AGENT_NODE_NAME=Processor"
+    - "APPDYNAMICS_AGENT_TIER_NAME=LoanProcessor-Services"
+    depends_on:
+    - "adcapitaldb"
+    - "rabbitmq"
+    ports:
+    - "8084:8080"
+
+  approval:
+    container_name: approval
+    hostname: approval
+    build:
+      context: ./ADCapital-Tomcat
+    image: appddemo/adcapital-tomcat
+    volumes:
+    - project:/project
+    - appdynamics:/appdynamics
+    env_file: ./docker-compose.env
+    environment:
+    - "ROLE=approval"
+    - "APPDYNAMICS_AGENT_NODE_NAME=Approval"
+    - "APPDYNAMICS_AGENT_TIER_NAME=Approval-Services"
+    depends_on:
+    - "adcapitaldb"
+    - "rabbitmq"
+    ports:
+    - "8085:8080"
+
+  load:
+    container_name: adcapitalload
+    hostname: adcapitalload
+    build:
+      context: ./ADCapital-Load
+    image: appddemo/adcapital-load
+    env_file: ./docker-compose.env
+    depends_on:
+    - "portal"
+    - "processor"
