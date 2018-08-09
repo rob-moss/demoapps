@@ -4,12 +4,16 @@ metadata:
   name: rest
   labels:
     app: rest
+    name: rest
+    keel.sh/policy: major
+    keel.sh/trigger: poll
 spec:
   replicas: 3
   strategy:
     type: Recreate
   template:
     metadata:
+      name: rest
       labels:
         app: rest
     spec:
@@ -53,7 +57,6 @@ spec:
         - mountPath: /appdynamics
           name: appdynamics
       restartPolicy: Always
-      imagePullPolicy: Always
       volumes:
       - name: hostroot
         hostPath:

@@ -4,12 +4,16 @@ metadata:
   name: portal
   labels:
     app: portal
+    name: portal
+    keel.sh/policy: major
+    keel.sh/trigger: poll
 spec:
   replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
+      name: portal
       labels:
         app: portal
     spec:
@@ -51,7 +55,6 @@ spec:
         - mountPath: /appdynamics
           name: appdynamics
       restartPolicy: Always
-      imagePullPolicy: Always
       volumes:
       - name: hostroot
         hostPath:
