@@ -1,12 +1,12 @@
 ## Agents in this project
 
-#Using the docker store image
+# Using the docker store image
 This project takes advantage of two main docker images. There is a docker image
 appdemo/adcapital-tomcat which is responsible for building the app with the java-agent.
 If you take a look at the ADCapital-Tomcat folder in this directory, you can see
 we are leveraging the docker store image (store/appdynamics/java:4.4_tomcat9-jre8-alpine).
 
-#Loading physical agents in docker
+# Loading physical agents in docker
 The DaemonSet in this project requires a machine agent to run. If you look at the
 second folder appd-machine, you can see this Dockerfile takes advantage of using a
 physical agent in the directory to build into the image. What's unique about this
