@@ -23,3 +23,21 @@ spec:
         resources: {}
       restartPolicy: Always
 status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: adcapitaldb
+  name: adcapitaldb
+spec:
+  ports:
+  - name: "3306"
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: adcapitaldb
+status:
+  loadBalancer: {}

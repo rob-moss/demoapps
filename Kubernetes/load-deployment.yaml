@@ -25,3 +25,22 @@ spec:
     resources: {}
   restartPolicy: Always
 status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: load
+  name: load
+spec:
+  clusterIP: None
+  ports:
+  - name: headless
+    port: 55555
+    targetPort: 0
+  selector:
+    app: load
+status:
+  loadBalancer: {}

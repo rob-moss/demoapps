@@ -5,7 +5,7 @@ metadata:
   labels:
     app: verification
     name: verification
-    keel.sh/policy: major
+    keel.sh/policy: force
     keel.sh/trigger: poll
 spec:
   replicas: 1
@@ -35,7 +35,7 @@ spec:
           value: Verification
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: Verification-Service
-        image: appddemo/adcapital-tomcat:4.4
+        image: appddemo/adcapital-tomcat:latest
         envFrom:
           - configMapRef:
               name: env-map
@@ -73,3 +73,21 @@ spec:
           - mountPath: /project
             name: project
 status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: verification
+  name: verification
+spec:
+  ports:
+  - name: "8083"
+    port: 8080
+    targetPort: 8083
+  selector:
+    app: verification
+status:
+  loadBalancer: {}

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: approval
     name: approval
-    keel.sh/policy: major
+    keel.sh/policy: force
     keel.sh/trigger: poll
 spec:
   replicas: 1
@@ -35,7 +35,7 @@ spec:
           value: Approval
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: Approval-Services
-        image: appddemo/adcapital-tomcat:4.4
+        image: appddemo/adcapital-tomcat:latest
         envFrom:
           - configMapRef:
               name: env-map
@@ -73,3 +73,21 @@ spec:
           - mountPath: /project
             name: project
 status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: approval
+  name: approval
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: approval
+status:
+  loadBalancer: {}
