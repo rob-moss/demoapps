@@ -35,6 +35,10 @@ spec:
           value: Approval
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: Approval-Services
+        - name: APPDYNAMICS_NETVIZ_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         image: appddemo/adcapital-tomcat:latest
         envFrom:
           - configMapRef:

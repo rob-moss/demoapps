@@ -8,13 +8,13 @@ numberOfThreads: 1
 metricPrefix:  "Custom Metrics|KubernetesEvents|"
 
 # Path to your kubectl Client configuration
-kubeClientConfig: ""
+kubeClientConfig: "/.kube/config"
 # Events API Key obtained from AppDynamics --> Analytics --> Configuration API Keys --> Add
 # The API Key you create needs to be able to Manage and Publish Custom Analytics Events
-eventsApiKey: ""
+eventsApiKey: "37a42738-9012-44ba-be8e-280eaea80e7a"
 # Global Account Name obtained from
 # AppDynamics --> Settings --> License --> Accounts --> Global Account Name
-accountName: ""
+accountName: "customer1_1a005e38-1560-4e59-8c8e-70c87fb03d75"
 # Name of your Custom Analytics Events Schema
 eventsSchemaName: "kubernetes_events"
 

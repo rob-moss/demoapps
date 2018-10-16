@@ -8,7 +8,7 @@ metadata:
     keel.sh/policy: force
     keel.sh/trigger: poll
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: Recreate
   template:
@@ -37,6 +37,10 @@ spec:
               fieldPath: metadata.name
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: Authentication-Service
+        - name: APPDYNAMICS_NETVIZ_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         image: appddemo/adcapital-tomcat:latest
         envFrom:
           - configMapRef:

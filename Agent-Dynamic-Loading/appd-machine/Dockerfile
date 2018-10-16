@@ -2,11 +2,11 @@ FROM openjdk:8-jre-slim AS builder
 
 MAINTAINER mark.prichard@appdynamics.com
 
+ENV APPD_AGENT_VERSION 4.5.2.1611
+ENV APPD_AGENT_SHA256 34b74f919ad1f8b1de763bb06bbbde84149ca2c2b0da33b31b64cc868ded83e9
+
 ARG APPD_AGENT_VERSION
 ARG APPD_AGENT_SHA256
-
-ENV APPD_AGENT_VERSION 4.5.0.1285
-ENV APPD_AGENT_SHA256 ad596edb3172a7c7c3090eeb70e0adbc6f6257bb76f80bac8d724d2fff37fdbd
 
 COPY MachineAgent-${APPD_AGENT_VERSION}.zip /
 RUN echo "${APPD_AGENT_SHA256} *MachineAgent-${APPD_AGENT_VERSION}.zip" >> appd_checksum \
@@ -37,7 +37,7 @@ COPY config /.kube/config
 ADD start-appdynamics ${MACHINE_AGENT_HOME}
 RUN chmod 744 ${MACHINE_AGENT_HOME}/start-appdynamics
 
-RUN curl https://sdk.cloud.google.com / | bash
+#RUN curl https://sdk.cloud.google.com / | bash
 
 # Configure and Run AppDynamics Machine Agent
 CMD "${MACHINE_AGENT_HOME}/start-appdynamics"

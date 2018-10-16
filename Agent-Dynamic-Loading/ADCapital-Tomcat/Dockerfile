@@ -1,5 +1,5 @@
-FROM store/appdynamics/java:4.4_tomcat9-jre8-alpine
-
+FROM store/appdynamics/java:4.5_tomcat9-jre8-alpine
+#FROM store/appdynamics/java:4.4_tomcat9-jre8-alpine
 #FROM store/appdynamics/java:4.3.7.1_tomcat9-jre8
 
 #UBUNTU Specific, 4.4 went to APK
@@ -25,7 +25,7 @@ ENV NETVIS_HOME /
 ADD startup.sh /
 RUN chmod 744 /startup.sh
 
-ADD appd-netviz-x64-linux-4.5.0.1000 /opt/appdynamics/ver4.4.3.22593/external-services
+#ADD appd-netviz-x64-linux-4.5.0.1000 /opt/appdynamics/ver4.4.3.22593/external-services
 
 #RUN ./opt/appdynamics/ver4.4.3.22593/external-services/install.sh
 
