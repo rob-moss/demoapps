@@ -20,7 +20,7 @@ eventsSchemaName: "kubernetes_events"
 
 # Events Service Endpoint. These Default settings are for SaaS Users. Change if you are on Premise
 #eventsUrl: "https://fra-ana-api.saas.appdynamics.com:443"
-eventsUrl: "https://analytics.api.appdynamics.com:443"
+eventsUrl: "http://ec2-34-222-55-207.us-west-2.compute.amazonaws.com:9080"
 
 # This is the Schema Definition that will be created if not already present
 eventsSchemaDefinition: '{

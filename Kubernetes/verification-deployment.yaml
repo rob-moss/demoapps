@@ -35,6 +35,12 @@ spec:
           value: Verification
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: Verification-Service
+        - name: APPD_ANALYTICS_MONITOR
+          value: "true"
+        - name: APPD_DOCKER_VISIBILITY
+          value: "true"
+        - name: MACHINE_AGENT_PROPERTIES
+          value: "-Dappdynamics.sim.enabled=true -Dappdynamics.docker.enabled=true"
         - name: APPDYNAMICS_NETVIZ_AGENT_HOST
           valueFrom:
             fieldRef:
