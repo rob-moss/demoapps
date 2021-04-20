@@ -1,6 +1,9 @@
 # demoapps
 Apps to demonstrate k8s features
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a21d41e (Updated README.md)
 
 
 ### Guestbook quick start
@@ -9,6 +12,7 @@ Apps to demonstrate k8s features
 kubectl create ns guestbook
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-lbsvc.yaml
 ```
+<<<<<<< HEAD
 
 
 ### Hipster Store quick start
@@ -25,3 +29,5 @@ kubectl -n botique apply -f https://raw.githubusercontent.com/GoogleCloudPlatfor
 ```
 =======
 >>>>>>> 3bc32eb (Initial commit)
+=======
+>>>>>>> a21d41e (Updated README.md)
