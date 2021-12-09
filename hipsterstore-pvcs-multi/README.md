@@ -2,10 +2,6 @@
 
 This is created for the SMM multi-cluster demo
 
-Run on both clusters:
-
-```
-```
 
 Run on SMM ControlPlane Cluster
 ```
