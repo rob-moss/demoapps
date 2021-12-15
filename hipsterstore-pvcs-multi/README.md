@@ -7,11 +7,13 @@ Run on SMM ControlPlane Cluster
 ```
 kubectl create ns hipsterstore-multi
 smm sp ai on hipsterstore-multi
-kubectl -n hipsterstore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/ctlpl.yaml
+kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/ctlpl.yaml
+kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/services-all.yaml
 ```
 
 Run on SMM Peer Cluster
 ```
 kubectl create ns hipsterstore-multi
-kubectl -n hipsterstore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/peer.yaml
+kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/peer.yaml
+kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/services-all.yaml
 ```

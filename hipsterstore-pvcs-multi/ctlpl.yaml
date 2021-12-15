@@ -370,3 +370,19 @@ spec:
   - name: grpc
     port: 9555
     targetPort: 9555
+---
+# Peer service exposure between ControlPlane and Peer kube clusters
+# Must create the same service on both clusters
+apiVersion: v1
+kind: Service
+metadata:
+  name: currencyservice
+spec:
+  type: ClusterIP
+  selector:
+    app: currencyservice
+  ports:
+  - name: grpc
+    port: 7000
+    targetPort: 7000
+---
