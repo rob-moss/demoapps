@@ -1,6 +1,0 @@
-
-
-kubectl create ns hipsterstore
-smm sp ai on hipsterstore
-kubectl -n hipsterstore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs/kubernetes-manifests-lbsvc.yaml
-
