@@ -2,6 +2,10 @@
 
 This is created for the SMM multi-cluster demo
 
+Run on Peer cluster
+```
+kubectl create ns hipsterstore-multi
+```
 
 Run on SMM ControlPlane Cluster
 ```
@@ -13,7 +17,6 @@ kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-mos
 
 Run on SMM Peer Cluster
 ```
-kubectl create ns hipsterstore-multi
 kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/peer.yaml
 kubectl -n hipsterstore-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/services-all.yaml
 ```
