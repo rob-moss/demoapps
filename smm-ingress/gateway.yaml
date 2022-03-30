@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  name: custom-gw
+  namespace: smm-system
+spec:
+  selector:
+    gateway-name: custom-gw
+    gateway-type: ingress
+  servers:
+  - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+  - hosts:
+    - '*'
+    port:
+      name: http-onlinebotique
+      number: 81
+      protocol: HTTP
+  - hosts:
+    - '*'
+    port:
+      name: http-teastore
+      number: 82
+      protocol: HTTP

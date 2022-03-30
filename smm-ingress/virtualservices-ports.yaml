@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  generation: 39
+  name: any
+  namespace: smm-system
+  clusterName: primary # or other peer cluster name
+spec:
+  gateways:
+  - custom-gw
+  hosts:
+  - '*'
+  http:
+  - match:
+    - port: 80
+    route:
+    - destination:
+        host: frontend.guestbook.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
+  - match:
+    - port: 81
+    route:
+    - destination:
+        host: frontend.onlinebotique.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
+  - match:
+    - port: 82
+    route:
+    - destination:
+        host: teastore-webui.teastore.svc.cluster.local
+        port:
+          number: 8080
+      weight: 100

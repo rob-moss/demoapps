@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  clusterName: primary
+  name: onlinebotique-hostheader
+  namespace: smm-system
+
+spec:
+  gateways:
+    - custom-gw
+  hosts:
+    - onlinebotique.172-17-50-187.nip.io
+  http:
+    - route:
+        - destination:
+            host: frontend.onlinebotique.svc.cluster.local
+            port:
+              number: 80
+          weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  clusterName: primary
+  name: onlinebotique-multi-hostheader
+  namespace: smm-system
+
+spec:
+  gateways:
+    - custom-gw
+  hosts:
+    - onlinebotique-multi.172-17-50-187.nip.io
+  http:
+    - route:
+        - destination:
+            host: frontend.onlinebotique-multi.svc.cluster.local
+            port:
+              number: 80
+          weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  clusterName: primary
+  name: teastore-hostheader
+  namespace: smm-system
+spec:
+  gateways:
+    - custom-gw
+  hosts:
+    - teastore.172-17-50-187.nip.io
+  http:
+    - route:
+        - destination:
+            host: teastore-webui.teastore.svc.cluster.local
+            port:
+              number: 8080
+          weight: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  clusterName: primary
+  name: guestbook-hostheader
+  namespace: smm-system
+spec:
+  gateways:
+    - custom-gw
+  hosts:
+    - guestbook.172-17-50-187.nip.io
+  http:
+    - route:
+        - destination:
+            host: frontend.guestbook.svc.cluster.local
+            port:
+              number: 80
+          weight: 100

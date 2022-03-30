@@ -4,12 +4,12 @@ Apps to demonstrate k8s features in the Cisco Intersight Kubernetes Service
 These open source applications have been adapted to work in IKS for specific customer use cases and demonstrations
 
 
-# Stand alone services with LB
+# Stand alone services with LoadBalancer service
 
 ### Online Botique from Google
 ```
-kubectl create ns botique
-kubectl -n botique apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
+kubectl create ns onlinebotique
+kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
 ```
 
 
