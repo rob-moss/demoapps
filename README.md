@@ -1,5 +1,23 @@
 # demoapps
-Apps to demonstrate k8s features
+Apps to demonstrate k8s features in the Cisco Intersight Kubernetes Service
+
+These open source applications have been adapted to work in IKS for specific customer use cases and demonstrations
+
+
+# Stand alone services with LB
+### Online Botique from Google
+```
+kubectl create ns botique
+kubectl -n botique apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
+```
+
+
+### Guestbook with a LoadBalancer service
+```
+kubectl create ns guestbook
+kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-lbsvc.yaml
+```
+
 
 # SMM exposed services
 
@@ -60,17 +78,3 @@ kubectl create ns teastore
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 ```
 
-
-# Stand alone services with LB
-### Online Botique from Google
-```
-kubectl create ns botique
-kubectl -n botique apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
-```
-
-
-### Guestbook with a LoadBalancer service
-```
-kubectl create ns guestbook
-kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-lbsvc.yaml
-```
