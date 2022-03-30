@@ -5,6 +5,7 @@ These open source applications have been adapted to work in IKS for specific cus
 
 
 # Stand alone services with LB
+
 ### Online Botique from Google
 ```
 kubectl create ns botique
@@ -12,7 +13,7 @@ kubectl -n botique apply -f https://raw.githubusercontent.com/GoogleCloudPlatfor
 ```
 
 
-### Guestbook with a LoadBalancer service
+### Guestbook
 ```
 kubectl create ns guestbook
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-lbsvc.yaml
@@ -21,13 +22,15 @@ kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapp
 
 # SMM exposed services
 
-When runing a Service Mesh Demo
+When runing a Service Mesh Demo, deploy these applications which are deployed with a ClusterIP service and use SMM's traffic management and service exposure to use these web applications
+
 
 ### Online Botique single cluster
 ```
 kubectl create ns onlinebotique
 smm sp ai on onlinebotique
 kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
+kubectl -n onlinebotique delete svc frontend-external
 ```
 
 ### Online botique multi-cluster
@@ -66,6 +69,7 @@ Run on SMM Peer Cluster
 ```
 kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
 kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/frontend.yaml
+kubectl -n onlinebotique-multi delete svc frontend-external
 kubectl -n onlinebotique-multi scale deployment loadgenerator --replicas=5
 ```
 
