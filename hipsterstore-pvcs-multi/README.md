@@ -1,5 +1,9 @@
 ### Hipster Store quick start
 
+This project has been deprecated due to Apache Log4J vulnerabilities
+Please instead use the onlinebotique project which is fully supported
+
+
 This is created for the SMM multi-cluster demo
 
 Run on Peer cluster
