@@ -62,7 +62,7 @@ kubectl -n onlinebotique-multi scale deployment frontend --replicas=5
 Run on SMM Backend Cluster
 ```
 kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/hipsterstore-pvcs-multi/backend.yaml
+kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/backend.yaml
 ```
 
 ### Browse to the SMM UI and select Topology
