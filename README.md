@@ -3,6 +3,8 @@ Apps to demonstrate k8s features
 
 # SMM exposed services
 
+When runing a Service Mesh Demo
+
 ### Online Botique single cluster
 ```
 kubectl create ns onlinebotique
@@ -12,9 +14,10 @@ kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/dem
 
 ### Online botique multi-cluster
 
-There are two clusters in use here
-SMM ControlPlane: This is the SMM Control Plane and assumed to be on-prem IKS
-SMM Peer: This is the SMM peer cluster and can be an AWS/EKS/GCP public cloud cluster used for web services
+There are two clusters in use here:
+
+SMM ControlPlane: This is the SMM Control Plane and assumed to be on-prem IKS.  
+SMM Peer: This is the SMM peer cluster and can be an AWS/EKS/GCP public cloud cluster used for web services.  
 
 
 Run on Peer cluster
