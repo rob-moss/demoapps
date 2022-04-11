@@ -36,6 +36,11 @@ smm sp ai on onlinebotique
 kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
 ```
 
+### Expose via LoadBalancer service
+```
+kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/frontend-lbsvc.yaml
+```
+
 ### Browse to the SMM UI and select Topology
 Select the namespace onlinebotique  
 The toplogy should show two separate clusters with links to each of the microservices spanning across the clusters  

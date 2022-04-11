@@ -27,7 +27,7 @@ metadata:
     app.kubernetes.io/managed-by: backyards
   clusterName: primary
   name: onlinebotique-multi-hostheader
-  namespace: smm-system
+  namespace: smm-custom-meshgateway
 
 spec:
   gateways:

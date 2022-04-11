@@ -15,14 +15,48 @@ kubectl apply -f istiomeshgateway.yaml
 ### Step 2: Create the Gateway
 ```
 kubectl apply -f gateway.yaml
-kubectl apply -f virtualservices-ports.yaml
 ```
+
+The Hostname to IP address DNS names may need to be updated to reflect the IP of the IstioGatewayMesh LoadBalancer IP
+
 
 ### Step 3: Create the VirtualService(s)
 
-### Deploy the Demo apps
+```
+kubectl apply -f virtualservices-ports.yaml
+kubectl apply -f virtualservices-hosts.yaml
+```
+
+### Step 4: Deploy the Demo apps
 Follow the instructions from the main README.md file to deploy the onlinebotique, guestbook and teastore apps
 
-### Create TLS certs
+```
+kubectl create ns onlinebotique
+smm sp ai on onlinebotique
+kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
+
+kubectl create ns teastore
+smm sp ai on teastore
+kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
+
+kubectl create ns guestbook
+smm sp ai on guestbook
+kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
+```
+
+
+### Step 5: Create TLS certs
+
 For HTTPS connections, we need to deploy TLS certs.  
+
 Follow these instructions
+
+https://smm-docs.eticloud.io/docs/convenience/lets-encrypt/?certificate
+
+
+```
+hostname=foo.bar.com
+export hostname
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $hostname.key -out $hostname.crt -subj "/CN=$hostname"
+kubectl create secret tls test-tls --key="$hostname.key" --cert="$hostname.crt" -n <namespace>
+```

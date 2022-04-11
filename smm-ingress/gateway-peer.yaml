@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  name: custom-gw-peer
+  namespace: smm-custom-meshgateway
+spec:
+  selector:
+    gateway-name: custom-gw-peer
+    gateway-type: ingress
+  servers:
+  - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP

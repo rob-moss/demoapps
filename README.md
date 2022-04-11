@@ -30,8 +30,27 @@ When runing a Service Mesh Demo, deploy these applications which are deployed wi
 kubectl create ns onlinebotique
 smm sp ai on onlinebotique
 kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
-kubectl -n onlinebotique delete svc frontend-external
 ```
+
+Adding a LoadBalancer service (not required for SMM)
+```
+kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/frontend-lbsvc.yaml
+```
+
+
+### Guestbook
+```
+kubectl create ns guestbook
+kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
+```
+
+### Teastore with a ClusterIP service
+```
+kubectl create ns teastore
+kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
+```
+
+
 
 ### Online botique multi-cluster
 
@@ -72,16 +91,3 @@ kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-mo
 kubectl -n onlinebotique-multi delete svc frontend-external
 kubectl -n onlinebotique-multi scale deployment loadgenerator --replicas=5
 ```
-
-### Guestbook
-```
-kubectl create ns guestbook
-kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
-```
-
-### Teastore with a ClusterIP service
-```
-kubectl create ns teastore
-kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
-```
-

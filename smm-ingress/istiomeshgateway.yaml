@@ -1,14 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: smm-custom-meshgateway
+  name: smm-custom-meshgateway
+---
 apiVersion: servicemesh.cisco.com/v1alpha1
 kind: IstioMeshGateway
 metadata:
   name: custom-gw
-  namespace: smm-system
-  clusterName: primary # or other peer cluster name
+  namespace: smm-custom-meshgateway
 spec:
   istioControlPlane:
     name: cp-v111x
     namespace: istio-system
-  runAsRoot: false
+  runAsRoot: true
   service:
     ports:
       - name: http
@@ -23,7 +29,7 @@ spec:
         port: 82
         protocol: TCP
         targetPort: 8082
-      - name: http2
+      - name: https
         port: 443
         protocol: TCP
         targetPort: 8443

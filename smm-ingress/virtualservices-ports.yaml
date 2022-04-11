@@ -3,10 +3,8 @@ kind: VirtualService
 metadata:
   annotations:
     app.kubernetes.io/managed-by: backyards
-  generation: 39
   name: any
-  namespace: smm-system
-  clusterName: primary # or other peer cluster name
+  namespace: smm-custom-meshgateway
 spec:
   gateways:
   - custom-gw

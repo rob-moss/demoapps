@@ -1,9 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: smm-custom-meshgateway
+  name: smm-custom-meshgateway
+---
 apiVersion: servicemesh.cisco.com/v1alpha1
 kind: IstioMeshGateway
 metadata:
   name: custom-gw-peer
-  namespace: smm-system
-  clusterName: romoss-iks-smmpeer03
+  namespace: smm-custom-meshgateway
 spec:
   istioControlPlane:
     name: cp-v111x
