@@ -4,7 +4,7 @@ metadata:
   annotations:
     app.kubernetes.io/managed-by: backyards
   name: custom-gw
-  namespace: smm-system
+  namespace: smm-custom-meshgateway
 spec:
   selector:
     gateway-name: custom-gw
