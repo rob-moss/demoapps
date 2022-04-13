@@ -6,10 +6,11 @@ These open source applications have been adapted to work in IKS for specific cus
 
 # Stand alone services with LoadBalancer service
 
-### Online Botique from Google
+### Online Boutique from Google
 ```
-kubectl create ns onlinebotique
-kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
+kubectl create ns onlineboutique
+kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
+kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/frontend-lbsvc.yaml
 ```
 
 
@@ -25,16 +26,16 @@ kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapp
 When runing a Service Mesh Demo, deploy these applications which are deployed with a ClusterIP service and use SMM's traffic management and service exposure to use these web applications
 
 
-### Online Botique single cluster
+### Online Boutique single cluster
 ```
-kubectl create ns onlinebotique
-smm sp ai on onlinebotique
-kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
+kubectl create ns onlineboutique
+smm sp ai on onlineboutique
+kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 ```
 
 Adding a LoadBalancer service (not required for SMM)
 ```
-kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/frontend-lbsvc.yaml
+kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/frontend-lbsvc.yaml
 ```
 
 
@@ -62,32 +63,32 @@ SMM Peer: This is the SMM peer cluster and can be an AWS/EKS/GCP public cloud cl
 
 Run on Peer cluster
 ```
-kubectl create ns onlinebotique-multi
+kubectl create ns onlineboutique-multi
 ```
 
 Run on SMM ControlPlane Cluster
 ```
-kubectl create ns onlinebotique-multi
-smm sp ai on onlinebotique-multi
+kubectl create ns onlineboutique-multi
+smm sp ai on onlineboutique-multi
 ```
 
 Run on Peer cluster
 ```
-kubectl get ns onlinebotique-multi -o yaml
+kubectl get ns onlineboutique-multi -o yaml
 ```
 Wait for the namespace to feature the label *"istio.io/rev: cp-v111x.istio-system"*
 Do not proceed if this label has not been added to the namespace
 
 Run on SMM ControlPlane Cluster
 ```
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/backend.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/services.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/backend.yaml
 ```
 
 Run on SMM Peer Cluster
 ```
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/frontend.yaml
-kubectl -n onlinebotique-multi delete svc frontend-external
-kubectl -n onlinebotique-multi scale deployment loadgenerator --replicas=5
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/services.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/frontend.yaml
+kubectl -n onlineboutique-multi delete svc frontend-external
+kubectl -n onlineboutique-multi scale deployment loadgenerator --replicas=5
 ```

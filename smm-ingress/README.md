@@ -28,12 +28,12 @@ kubectl apply -f virtualservices-hosts.yaml
 ```
 
 ### Step 4: Deploy the Demo apps
-Follow the instructions from the main README.md file to deploy the onlinebotique, guestbook and teastore apps
+Follow the instructions from the main README.md file to deploy the onlineboutique, guestbook and teastore apps
 
 ```
-kubectl create ns onlinebotique
-smm sp ai on onlinebotique
-kubectl -n onlinebotique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique/kubernetes-manifests.yaml
+kubectl create ns onlineboutique
+smm sp ai on onlineboutique
+kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 
 kubectl create ns teastore
 smm sp ai on teastore
