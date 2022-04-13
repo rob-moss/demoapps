@@ -19,7 +19,7 @@ spec:
   - hosts:
     - '*'
     port:
-      name: http-onlinebotique
+      name: http-onlineboutique
       number: 81
       protocol: HTTP
   - hosts:

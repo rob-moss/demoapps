@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ x$1 = "x" ]; then
+hostname=$1
+if [ x$hostname = "x" ]; then
     echo "Please enter the hostname for the cert:"
     read hostname
     #hostname=foo.bar.com

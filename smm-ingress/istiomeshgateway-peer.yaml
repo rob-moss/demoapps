@@ -21,7 +21,7 @@ spec:
         port: 80
         protocol: TCP
         targetPort: 8080
-      - name: http-onlinebotique
+      - name: http-onlineboutique
         port: 81
         protocol: TCP
         targetPort: 8081

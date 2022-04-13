@@ -4,18 +4,18 @@ metadata:
   annotations:
     app.kubernetes.io/managed-by: backyards
   clusterName: primary
-  name: onlinebotique-hostheader
+  name: onlineboutique-hostheader
   namespace: smm-custom-meshgateway
 
 spec:
   gateways:
     - custom-gw
   hosts:
-    - onlinebotique.172-17-50-190.nip.io
+    - onlineboutique.172-17-50-190.nip.io
   http:
     - route:
         - destination:
-            host: frontend.onlinebotique.svc.cluster.local
+            host: frontend.onlineboutique.svc.cluster.local
             port:
               number: 80
           weight: 100
@@ -26,18 +26,18 @@ metadata:
   annotations:
     app.kubernetes.io/managed-by: backyards
   clusterName: primary
-  name: onlinebotique-multi-hostheader
+  name: onlineboutique-multi-hostheader
   namespace: smm-custom-meshgateway
 
 spec:
   gateways:
     - custom-gw
   hosts:
-    - onlinebotique-multi.172-17-50-190.nip.io
+    - onlineboutique-multi.172-17-50-190.nip.io
   http:
     - route:
         - destination:
-            host: frontend.onlinebotique-multi.svc.cluster.local
+            host: frontend.onlineboutique-multi.svc.cluster.local
             port:
               number: 80
           weight: 100

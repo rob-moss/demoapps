@@ -23,7 +23,7 @@ spec:
     - port: 81
     route:
     - destination:
-        host: frontend.onlinebotique.svc.cluster.local
+        host: frontend.onlineboutique.svc.cluster.local
         port:
           number: 80
       weight: 100
