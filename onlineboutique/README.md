@@ -1,4 +1,4 @@
-## Online botique quick start
+## Online boutique quick start
 
 This is created for the SMM single-cluster demo
 
