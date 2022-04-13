@@ -35,18 +35,18 @@ Run the commands below on each of the relevant clusters
 
 Run on Peer cluster
 ```
-kubectl create ns onlinebotique-multi
+kubectl create ns onlineboutique-multi
 ```
 
 Run on SMM ControlPlane Cluster
 ```
-kubectl create ns onlinebotique-multi
-smm sp ai on onlinebotique-multi
+kubectl create ns onlineboutique-multi
+smm sp ai on onlineboutique-multi
 ```
 
 Run on Peer cluster
 ```
-kubectl get ns onlinebotique-multi -o yaml
+kubectl get ns onlineboutique-multi -o yaml
 ```
 Wait for the namespace to feature the label "istio.io/rev: cp-v111x.istio-system"
 Do not proceed if this label has not been added to the namespace
@@ -54,22 +54,22 @@ Do not proceed if this label has not been added to the namespace
 
 Run on SMM Front end Cluster
 ```
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/frontend.yaml
-kubectl -n onlinebotique-multi scale deployment frontend --replicas=5
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/services.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/frontend.yaml
+kubectl -n onlineboutique-multi scale deployment frontend --replicas=5
 ```
 
 Run on SMM Backend Cluster
 ```
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/services.yaml
-kubectl -n onlinebotique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlinebotique-multi/backend.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/services.yaml
+kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique-multi/backend.yaml
 ```
 
 ### Browse to the SMM UI and select Topology
-Select the namespace onlinebotique-multi
+Select the namespace onlineboutique-multi
 The toplogy should show two separate clusters with links to each of the microservices spanning across the clusters
 If not, there may be an issue with the steps above - try deleting namespaces and re-running as above
 
 ### Troubleshooting
-* Try deleting namespaces and recreating on Controlplane first, then Peer, then run the "smm sp ai on onlinebotique-multi" command on the controlplane and check the Peer if it has received the label (takes 5-10 seconds). Once that namespace is labelled, then proceed
+* Try deleting namespaces and recreating on Controlplane first, then Peer, then run the "smm sp ai on onlineboutique-multi" command on the controlplane and check the Peer if it has received the label (takes 5-10 seconds). Once that namespace is labelled, then proceed
 * Try detaching the SMM cluster and reattaching it with the --force flag
