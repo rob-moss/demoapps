@@ -7,14 +7,15 @@ SMM documentation is avialable here
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
 
 
+
 ### Step 1: Create the IstioMeshGateway
 ```
-kubectl apply -f istiomeshgateway.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/istiomeshgateway.yaml
 ```
 
 ### Step 2: Create the Gateway
 ```
-kubectl apply -f gateway.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/gateway.yaml
 ```
 
 The Hostname to IP address DNS names may need to be updated to reflect the IP of the IstioGatewayMesh LoadBalancer IP
@@ -23,8 +24,8 @@ The Hostname to IP address DNS names may need to be updated to reflect the IP of
 ### Step 3: Create the VirtualService(s)
 
 ```
-kubectl apply -f virtualservices-ports.yaml
-kubectl apply -f virtualservices-hosts.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-hosts.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-ports.yaml
 ```
 
 ### Step 4: Deploy the Demo apps
@@ -32,15 +33,15 @@ Follow the instructions from the main README.md file to deploy the onlineboutiqu
 
 ```
 kubectl create ns onlineboutique
-smm sp ai on onlineboutique
+kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
 kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 
 kubectl create ns teastore
-smm sp ai on teastore
+kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 
 kubectl create ns guestbook
-smm sp ai on guestbook
+kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
 ```
 
