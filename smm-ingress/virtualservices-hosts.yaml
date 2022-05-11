@@ -26,30 +26,8 @@ metadata:
   annotations:
     app.kubernetes.io/managed-by: backyards
   clusterName: primary
-  name: onlineboutique-multi-hostheader
-  namespace: smm-custom-meshgateway
-
-spec:
-  gateways:
-    - custom-gw
-  hosts:
-    - onlineboutique-multi.172-17-50-190.nip.io
-  http:
-    - route:
-        - destination:
-            host: frontend.onlineboutique-multi.svc.cluster.local
-            port:
-              number: 80
-          weight: 100
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  annotations:
-    app.kubernetes.io/managed-by: backyards
-  clusterName: primary
   name: teastore-hostheader
-  namespace: smm-system
+  namespace: smm-custom-meshgateway
 spec:
   gateways:
     - custom-gw
@@ -70,7 +48,7 @@ metadata:
     app.kubernetes.io/managed-by: backyards
   clusterName: primary
   name: guestbook-hostheader
-  namespace: smm-system
+  namespace: smm-custom-meshgateway
 spec:
   gateways:
     - custom-gw
