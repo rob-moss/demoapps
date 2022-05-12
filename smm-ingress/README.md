@@ -9,11 +9,19 @@ https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
 
 
 ### Step 1: Create the IstioMeshGateway
+
+This step will
+- Create a Namespace "smm-custom-meshgateway"
+- Create an IstioMeshGateway LoadBalancer service with public IP address as the istio ingressgateway for SMM
+
+
 ```
 kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/istiomeshgateway.yaml
 ```
 
 ### Step 2: Create the Gateway
+This step will create an Istio Gateway with ports 80, 81 and 82
+
 ```
 kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/gateway.yaml
 ```
@@ -23,9 +31,9 @@ The Hostname to IP address DNS names may need to be updated to reflect the IP of
 
 ### Step 3: Create the VirtualService(s)
 
-In this step we create two sets of VirtualServices (or SMM Rules).  The first one  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.
+In this step we create two sets of VirtualServices (or SMM Rules).  The first one  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.  
 
-The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your IKS cluster's IstioMeshGateway IP
+The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your IKS cluster's IstioMeshGateway IP.  
 
 This is documented here 
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/

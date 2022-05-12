@@ -97,10 +97,8 @@ Create standalone SMM Gateway dedicated to application ingress.  This has been c
 
 
 
-
 SMM documentation on how to create the IstioMeshGateway is here:
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
-
 
 
 
@@ -111,7 +109,6 @@ kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-in
 kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-hosts.yaml
 kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-ports.yaml
 ```
-
 
 
 This will
