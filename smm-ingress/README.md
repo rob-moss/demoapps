@@ -52,15 +52,8 @@ Now to update the virtualservices using Hostnames will require additional steps.
 kubectl -n smm-custom-meshgateway get svc custom-gw
 ```
 
-Then you can edit these Rules via the SMM Dashboard, browsing to:
-- Left hand side bar
-- Gateways > custom-gw
-- Routes
-- Click the pencil icon of each hostname rule and update the hostname
+Edit the virtualservices and replace the IP address with the IP address of your custom-gw IP, with the following commands:
 
-Or
-
-Edit the virtualservices by hand with the following commands
 ```
 kubectl -n smm-custom-meshgateway edit vs onlineboutique-hostheader
 kubectl -n smm-custom-meshgateway edit vs guestbook-hostheader
@@ -77,11 +70,11 @@ kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
 kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 
 kubectl create ns teastore
-kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
+kubectl label ns teastore "istio.io/rev=cp-v111x.istio-system"
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 
 kubectl create ns guestbook
-kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
+kubectl label ns guestbook "istio.io/rev=cp-v111x.istio-system"
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
 ```
 
@@ -98,6 +91,9 @@ Open a browser and browse to the IP address from step #3
 Test out HTTP port 80, 81 and 82
 Also try browsing to the hostnames
 
+
+
+---
 
 ### Using HTTPS/TLS connections
 For HTTPS connections, we need to deploy TLS certs.  
