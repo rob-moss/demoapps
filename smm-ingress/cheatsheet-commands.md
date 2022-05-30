@@ -1,5 +1,10 @@
 # Cheatsheet and frequently used commands for SMM and Istio
 
+In order to run these Demo Apps and the SMM demoapp it is recommended to build and IKS cluster with the following specs
+* 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
+* 3 Worker Nodes with at least 8 vCPU and 32GB RAM
+
+
 ### Set SMM dashboard to not require a login
 #### smm 1.8.x
 ```

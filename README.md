@@ -3,6 +3,10 @@ Apps to demonstrate k8s features in the Cisco Intersight Kubernetes Service
 
 These open source applications have been adapted to work in IKS for specific customer use cases and demonstrations
 
+In order to run these Demo Apps and the SMM demoapp it is recommended to build and IKS cluster with the following specs
+* 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
+* 3 Worker Nodes with at least 8 vCPU and 32GB RAM
+
 
 # Stand alone services with LoadBalancer service
 

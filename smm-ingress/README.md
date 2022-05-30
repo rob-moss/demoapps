@@ -2,6 +2,11 @@
 
 The purpose of this is to create a new SMM Ingress Gateway with a public IP LoadBalancer address that can be used to manage traffic based on IP address, HTTP host header and TCP ports
 
+In order to run these Demo Apps and the SMM demoapp it is recommended to build and IKS cluster with the following specs
+* 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
+* 3 Worker Nodes with at least 8 vCPU and 32GB RAM
+
+
 
 SMM documentation is avialable here
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
@@ -60,6 +65,7 @@ kubectl -n smm-custom-meshgateway edit vs guestbook-hostheader
 kubectl -n smm-custom-meshgateway edit vs teastore-hostheader
 ```
 
+172.17.50.182
 
 ### Step 4: Deploy the Demo apps
 Follow the instructions from the main README.md file to deploy the onlineboutique, guestbook and teastore apps
@@ -93,7 +99,32 @@ Also try browsing to the hostnames
 
 
 
+
+
+
+
+
+
+
+
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Advanced topics
 
 ### Using HTTPS/TLS connections
 For HTTPS connections, we need to deploy TLS certs.  
