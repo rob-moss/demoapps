@@ -124,6 +124,12 @@ This will
 - Create an Istio VirtualService with hostname matching for onlineboutique, teastore and guestbook
 - Allow editing these ingress rules from the SMM GUI
 
+
+Checking these have been created
+```
+kubectl -n smm-custom-meshgateway get vs,gw,imgw,svc
+```
+
 Create the demo apps
 ```
 kubectl create ns guestbook

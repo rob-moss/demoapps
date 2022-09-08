@@ -11,7 +11,7 @@ spec:
   gateways:
     - custom-gw
   hosts:
-    - onlineboutique.172-17-50-187.nip.io
+    - onlineboutique.172-19-5-52.nip.io
   http:
     - route:
         - destination:
@@ -33,7 +33,7 @@ spec:
   gateways:
     - custom-gw
   hosts:
-    - onlineboutique-multi.172-17-50-187.nip.io
+    - onlineboutique-multi.172-19-5-52.nip.io
   http:
     - route:
         - destination:
@@ -54,7 +54,7 @@ spec:
   gateways:
     - custom-gw
   hosts:
-    - teastore.172-17-50-187.nip.io
+    - teastore.172-19-5-52.nip.io
   http:
     - route:
         - destination:
@@ -75,7 +75,7 @@ spec:
   gateways:
     - custom-gw
   hosts:
-    - guestbook.172-17-50-187.nip.io
+    - guestbook.172-19-5-52.nip.io
   http:
     - route:
         - destination:
