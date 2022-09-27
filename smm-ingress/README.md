@@ -41,9 +41,9 @@ In this step we create two sets of VirtualServices (or SMM Rules).  The first on
 The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your IKS cluster's IstioMeshGateway IP.  
 
 This is documented here 
-https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
-https://smm-docs.eticloud.io/docs/dashboard/gateways/routes-traffic-management/
-https://nip.io
+https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/  
+https://smm-docs.eticloud.io/docs/dashboard/gateways/routes-traffic-management/  
+https://nip.io  
 
 
 To create the template VirtualServices

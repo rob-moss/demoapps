@@ -46,12 +46,14 @@ kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/de
 ### Guestbook
 ```
 kubectl create ns guestbook
+smm sp ai on guestbook
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
 ```
 
 ### Teastore with a ClusterIP service
 ```
 kubectl create ns teastore
+smm sp ai on teastore
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 ```
 
