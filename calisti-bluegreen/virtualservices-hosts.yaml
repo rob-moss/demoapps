@@ -37,23 +37,3 @@ spec:
         port:
           number: 80
       weight: 100
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  annotations:
-    app.kubernetes.io/managed-by: backyards
-  name: onlineboutique-bgprod
-  namespace: smm-custom-meshgateway
-spec:
-  gateways:
-  - custom-gw
-  hosts:
-  - onlineboutique-bgprod.172-19-5-52.nip.io
-  http:
-  - route:
-    - destination:
-        host: frontend.onlineboutique-blue.svc.cluster.local
-        port:
-          number: 80
-      weight: 100
