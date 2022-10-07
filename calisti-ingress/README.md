@@ -1,8 +1,8 @@
 # Create an SMM Istio Mesh Gateway
 
-The purpose of this is to create a new SMM Ingress Gateway with a public IP LoadBalancer address that can be used to manage traffic based on IP address, HTTP host header and TCP ports
+The purpose of this is to create a new Calisti Ingress Gateway with a public IP LoadBalancer address that can be used to manage traffic based on IP address, HTTP host header and TCP ports
 
-In order to run these Demo Apps and the SMM demoapp it is recommended to build and IKS cluster with the following specs
+In order to run these Demo Apps and the demoapp it is recommended to build and IKS cluster with the following specs
 * 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
 * 3 Worker Nodes with at least 8 vCPU and 32GB RAM
 
@@ -36,7 +36,7 @@ The Hostname to IP address DNS names may need to be updated to reflect the IP of
 
 ### Step 3: Create the VirtualService(s)
 
-In this step we create two sets of VirtualServices (or SMM Rules).  The first one  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.  
+In this step we create two sets of VirtualServices (or Calisti Rules).  The first one  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.  
 
 The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your IKS cluster's IstioMeshGateway IP.  
 
@@ -65,27 +65,26 @@ kubectl -n smm-custom-meshgateway edit vs guestbook-hostheader
 kubectl -n smm-custom-meshgateway edit vs teastore-hostheader
 ```
 
-172.17.50.182
 
 ### Step 4: Deploy the Demo apps
 Follow the instructions from the main README.md file to deploy the onlineboutique, guestbook and teastore apps
 
 ```
 kubectl create ns onlineboutique
-kubectl label ns onlineboutique "istio.io/rev=cp-v111x.istio-system"
+smm sp ai on onlineboutique
 kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 
 kubectl create ns teastore
-kubectl label ns teastore "istio.io/rev=cp-v111x.istio-system"
+smm sp ai on onlineboutique
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 
 kubectl create ns guestbook
-kubectl label ns guestbook "istio.io/rev=cp-v111x.istio-system"
+smm sp ai on onlineboutique
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
 ```
 
 
-### Step 5: Log in to SMM and review the rules
+### Step 5: Log in to Calisti and review the rules
 
 In step #3 the *.nip.io hostnames should have been updated, if not then please do that now following these instructions
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
@@ -96,6 +95,9 @@ Open a browser and browse to the IP address from step #3
 
 Test out HTTP port 80, 81 and 82
 Also try browsing to the hostnames
+
+
+
 
 
 
