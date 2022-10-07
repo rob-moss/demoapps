@@ -1,8 +1,8 @@
-# Create an SMM Istio Mesh Gateway
+# Create a Calisti Istio Mesh Gateway
 
 The purpose of this is to create a new Calisti Ingress Gateway with a public IP LoadBalancer address that can be used to manage traffic based on IP address, HTTP host header and TCP ports
 
-In order to run these Demo Apps and the demoapp it is recommended to build and IKS cluster with the following specs
+In order to run these Demo Apps and the demoapp it is recommended to build a Kubernetes cluster with the following specs
 * 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
 * 3 Worker Nodes with at least 8 vCPU and 32GB RAM
 
@@ -38,7 +38,7 @@ The Hostname to IP address DNS names may need to be updated to reflect the IP of
 
 In this step we create two sets of VirtualServices (or Calisti Rules).  The first one  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.  
 
-The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your IKS cluster's IstioMeshGateway IP.  
+The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your Kubernetes cluster's IstioMeshGateway IP.  
 
 This is documented here 
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/  
