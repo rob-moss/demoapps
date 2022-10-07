@@ -32,14 +32,41 @@ kubectl -n onlineboutique-green apply -f https://raw.githubusercontent.com/rob-m
 
 ```
 cd /tmp
-wget https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-blue.css
-wget https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-green.css
+wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-blue.css
+wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-green.css
 
 
-pod=$(kubectl -n onlineboutique-blue get pod -l app=frontend -o name)
+pod=$(kubectl -n onlineboutique-blue get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
 kubectl cp /tmp/styles-blue.css onlineboutique-blue/$pod:/src/static/styles/styles.css
 
-pod=$(kubectl -n onlineboutique-green get pod -l app=frontend -o name)
+pod=$(kubectl -n onlineboutique-green get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
 kubectl cp /tmp/styles-green.css onlineboutique-green/$pod:/src/static/styles/styles.css
 
 ```
+
+## Add the Gateways
+
+We create the Calisti gateway using steps #2 and onwards from here https://github.com/rob-moss/demoapps/tree/main/calisti-ingress#step-2-create-the-istiomeshgateway
+
+If the gateway has already been created, then skip down to just the section below that creates the VirtualServices
+
+```
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/virtualservices-hosts.yaml
+```
+
+The virtualservices may need to be edited to use the correct IP address for your Calisi Ingress Gateway
+
+
+Now to update the virtualservices using Hostnames will require additional steps.  First fetch the Calisti ingressgateway IP address;  
+```
+kubectl -n smm-custom-meshgateway get svc custom-gw
+```
+
+Edit the virtualservices and replace the IP address with the IP address of your custom-gw IP, with the following commands:
+
+```
+kubectl -n smm-custom-meshgateway edit vs onlineboutique-green
+kubectl -n smm-custom-meshgateway edit vs onlineboutique-blue
+```
+
+## Test the services
