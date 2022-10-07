@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  name: onlineboutique-green-172-19-5-52
+  namespace: smm-custom-meshgateway
+spec:
+  gateways:
+  - custom-gw
+  hosts:
+  - onlineboutique-green.172-19-5-52.nip.io
+  http:
+  - route:
+    - destination:
+        host: frontend.onlineboutique-green.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/managed-by: backyards
+  name: onlineboutique-blue-172-19-5-52
+  namespace: smm-custom-meshgateway
+spec:
+  gateways:
+  - custom-gw
+  hosts:
+  - onlineboutique-blue.172-19-5-52.nip.io
+  http:
+  - route:
+    - destination:
+        host: frontend.onlineboutique-blue.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
