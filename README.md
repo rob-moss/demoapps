@@ -25,7 +25,7 @@ kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapp
 ```
 
 
-# SMM exposed services
+# Calisti exposed services
 
 When runing a Service Mesh Demo, deploy these applications which are deployed with a ClusterIP service and use SMM's traffic management and service exposure to use these web applications
 
