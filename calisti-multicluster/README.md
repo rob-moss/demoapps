@@ -18,9 +18,9 @@ This guide was written and tested using IKS 1.21.11 and Calisti version 1.8.2
 * Calisti ControlPlane deployed on the on-prem cluster
 * AWS/GCP cluster without Calisti deployed (this will become the Peer cluster)
 * Calisti ControlPlane cluster attach the Peer cluster (https://smm-docs.eticloud.io/docs/installation/multi-cluster/)  
-  From ControlPlane: ```smm istio cluster attach <PEER_CLUSTER_KUBECONFIG_FILE>```
+  Run on ControlPlane: ```smm istio cluster attach <PEER_CLUSTER_KUBECONFIG_FILE>```
 * Attach successfully links both clusters  
-  From ControlPlane:  ```smm istio cluster status```
+  Run on ControlPlane:  ```smm istio cluster status```
 
 
 ### Kubernetes Clusters
