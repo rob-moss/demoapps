@@ -33,10 +33,10 @@ Kubernetes clusters you will need:
 ### Demo use case
 In this demo, we have split an application in to two halves
 
-#### Frontend (Peer)
+#### Frontend (Peer cluster)
 This is where the user facing web services will run from, so as to be closer to the user, faster and lower latency. In this example we are using an Kubernetes cluster but this would traditionally be an AWS or GCP cluster out in the public cloud.  This will be using the Peer cluster   
 
-#### Backend (ControlPlane)
+#### Backend (ControlPlane cluster)
 This is where the database and data processing services will run from, so that memory and cpu intensive pods are faster and cheaper to run. This will be using the ControlPlane cluster
 
 
