@@ -30,6 +30,8 @@ kubectl -n onlineboutique-green apply -f https://raw.githubusercontent.com/rob-m
 
 ## Copy the Blue and Green stylesheets
 
+The stylesheets below will colour the text from dark Gray to dark Blue and Green respectively
+
 ```
 cd /tmp
 wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-blue.css
@@ -41,7 +43,6 @@ kubectl cp /tmp/styles-blue.css onlineboutique-blue/$pod:/src/static/styles/styl
 
 pod=$(kubectl -n onlineboutique-green get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
 kubectl cp /tmp/styles-green.css onlineboutique-green/$pod:/src/static/styles/styles.css
-
 ```
 
 ## Add the Gateways
@@ -70,3 +71,8 @@ kubectl -n smm-custom-meshgateway edit vs onlineboutique-blue
 ```
 
 ## Test the services
+
+Open a browser to the hostnames below (replace x-x-x-x with the IP of your Calisti ingress gateway)
+* onlineboutique-blue.x-x-x-x.nip.ip
+* onlineboutique-green.x-x-x-x.nip.ip
+* onlineboutique-bgprod.x-x-x-x.nip.ip
