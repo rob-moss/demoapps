@@ -65,7 +65,7 @@ EOF
 sleep 10
 kubectl -n smm-demo exec -it ubuntu -- /bin/bash
 ```
-
+ 
 ```
 kubectl -n smm-demo exec -it ubuntu -- apt-get update
 kubectl -n smm-demo exec -it ubuntu -- apt-get install curl wget nmap
