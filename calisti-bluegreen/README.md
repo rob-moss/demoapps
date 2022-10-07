@@ -1,5 +1,7 @@
 # Calisti blue/green application management demo
 
+## Prerequisites:
+
 Using the Calisti Ingress Gateway demo shown here https://github.com/rob-moss/demoapps/tree/main/calisti-ingress we can use this same method to switch between two different versions of applications, using the same Blue/Green methodology
 
 

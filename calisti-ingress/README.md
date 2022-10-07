@@ -43,7 +43,8 @@ kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calist
 ```
 
 ### Step 3: Create the Gateway
-This step will create an Istio Gateway with ports 80, 81 and 82
+This step will 
+- Create an Istio Gateway with ports 80, 81 and 82
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-ingress/gateway.yaml
@@ -56,7 +57,7 @@ The Hostname to IP address DNS names may need to be updated to reflect the IP of
 
 In this step we create two sets of VirtualServices (or Calisti Rules).  The first file  "virtualservices-ports.yaml" forwards traffic on specific TCP ports, ie 80, 81 and 82 to specified kubernetes apps, ie onlineboutique, guestbook and teastore.  
 
-The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, Calisti will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your Kubernetes cluster's IstioMeshGateway IP.  
+The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, Calisti will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own Calisti Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the Calisti IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your Kubernetes cluster's IstioMeshGateway IP.  
 
 This is documented here  
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/  
@@ -94,9 +95,15 @@ https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
 
 Open a browser and browse to the IP address from step #4
 
-Test out HTTP port 80, 81 and 82
-Also try browsing to the hostnames
+Test out HTTP ports
+* 80 - Guestbook
+* 81 - Onlineboutique
+* 82 - Teastore
 
+Also try browsing to the hostnames
+* teastore.x.x.x.x.nip.io
+* onlineboutique.x.x.x.x.nip.io
+* guestbook.x.x.x.x.nip.io
 
 
 

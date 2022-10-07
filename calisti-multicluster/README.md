@@ -1,4 +1,4 @@
-## Online boutique quick start
+## Calisti multi-cluster demo using the Online Boutique
 
 This is created for the Calisti multi-cluster demo
 
@@ -7,9 +7,21 @@ The main website is
 https://github.com/GoogleCloudPlatform/microservices-demo  
 https://onlineboutique.dev/  
 
-Run the command as follows on a set of Kubernetes clusters with Calisti installed on the controlplane cluster and no addons for the Peer cluster
+Run the commands as follows on a set of Kubernetes clusters with Calisti installed on the controlplane cluster and no addons for the Peer cluster
 
-This guide was written using IKS 1.20.4 and the Calisti version 1.8.1
+This guide was written and tested using IKS 1.21.11 and Calisti version 1.8.2
+
+## Prerequisites:
+
+* Two Kubernetes clusters - ideally one on-prem, one in AWS or GCP
+* Calisti version 1.8.2 or later deployed on the on-prem Kubernetes cluster
+* Calisti ControlPlane deployed on the on-prem cluster
+* AWS/GCP cluster without Calisti deployed (this will become the Peer cluster)
+* Calisti ControlPlane cluster attach the Peer cluster (https://smm-docs.eticloud.io/docs/installation/multi-cluster/)
+  From ControlPlane: ```smm istio cluster attach <PEER_CLUSTER_KUBECONFIG_FILE>```
+* Attach successfully links both clusters
+  From ControlPlane:  ```smm istio cluster status```
+
 
 ### Kubernetes Clusters
 
@@ -65,9 +77,11 @@ kubectl -n onlineboutique-multi apply -f https://raw.githubusercontent.com/rob-m
 ```
 
 ### Browse to the Calisti UI and select Topology
-Select the namespace onlineboutique-multi
-The toplogy should show two separate clusters with links to each of the microservices spanning across the clusters
-If not, there may be an issue with the steps above - try deleting namespaces and re-running as above
+* Log in to the Calisti UI and go to Topology  
+* Select the namespace onlineboutique-multi  
+* The toplogy should show two separate clusters with links to each of the microservices spanning across the clusters  
+* If not, there may be an issue with the steps above - try deleting namespaces and re-running as above  
+
 
 ### Troubleshooting
 * Try deleting namespaces and recreating on Controlplane first, then Peer, then run the "smm sp ai on onlineboutique-multi" command on the controlplane and check the Peer ```kubectl get ns onlineboutique-multi -o yaml``` if it has received the istio label (takes 5-10 seconds). Once that namespace is labelled, then proceed
