@@ -7,22 +7,22 @@ The main website is
 https://github.com/GoogleCloudPlatform/microservices-demo  
 https://onlineboutique.dev/  
 
-Run the command as follows on a set of IKS clusters with SMM installed on the controlplane cluster and no addons for the Peer cluster
+Run the command as follows on a set of Kubernetes clusters with Calisti installed on the controlplane cluster and no addons for the Peer cluster
 
-This guide was written using IKS 1.20.4 and the Calisti version 1.8.2
+This guide was written using IKS 1.20.4 and the Calisti version 1.8.1
 
-### IKS Clusters
+### Kubernetes Clusters
 
-IKS clusters you will need:
-* The Controlplane cluster - this IKS cluster will have the Calisti add-on installed.  This will provide the web UI.  
-* The Peer cluster - this is an IKS cluster with no add-ons installed. When we 'attach' the Peer cluster, the Calisti installer will automatically deploy the Calisti services as needed.  
+Kubernetes clusters you will need:
+* The Controlplane cluster - this Kubernetes cluster will have the Calisti add-on installed.  This will provide the web UI.  
+* The Peer cluster - this is an Kubernetes cluster with no add-ons installed. When we 'attach' the Peer cluster, the Calisti installer will automatically deploy the Calisti services as needed.  
 
 
 ### Demo use case
 In this demo, we have split an application in to two halves
 
 #### Frontend (Peer)
-This is where the user facing web services will run from, so as to be closer to the user, faster and lower latency. In this example we are using an IKS cluster but this would traditionally be an AWS or GCP cluster out in the public cloud.  This will be using the Peer cluster   
+This is where the user facing web services will run from, so as to be closer to the user, faster and lower latency. In this example we are using an Kubernetes cluster but this would traditionally be an AWS or GCP cluster out in the public cloud.  This will be using the Peer cluster   
 
 #### Backend (ControlPlane)
 This is where the database and data processing services will run from, so that memory and cpu intensive pods are faster and cheaper to run. This will be using the ControlPlane cluster

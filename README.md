@@ -1,9 +1,8 @@
-# demoapps
-Apps to demonstrate k8s features in the Cisco Intersight Kubernetes Service
+# Kubernetes demo apps
 
-These open source applications have been adapted to work in IKS for specific customer use cases and demonstrations
+These open source applications have been adapted to work in IKS and Calisti for specific customer use cases and demonstrations
 
-In order to run these Demo Apps and the SMM demoapp it is recommended to build and IKS cluster with the following specs
+In order to run these Demo Apps and the Calisti demoapps it is recommended to build a Kubernetes cluster with the following specs
 * 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
 * 3 Worker Nodes with at least 8 vCPU and 32GB RAM
 

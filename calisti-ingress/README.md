@@ -21,14 +21,14 @@ This step will
 
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/istiomeshgateway.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-ingress/istiomeshgateway.yaml
 ```
 
 ### Step 2: Create the Gateway
 This step will create an Istio Gateway with ports 80, 81 and 82
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/gateway.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-ingress/gateway.yaml
 ```
 
 The Hostname to IP address DNS names may need to be updated to reflect the IP of the IstioGatewayMesh LoadBalancer IP
@@ -40,7 +40,7 @@ In this step we create two sets of VirtualServices (or Calisti Rules).  The firs
 
 The second file "virtualservices-hosts.yaml" uses HTTP Host header matches, so when we browse to that hostname, SMM will route traffic on to the specified kubernetes app. This example uses a hostname *.nip.io which is an online service that returns the IP address you have specified in hte hostname and will need to be updated to match your own SMM Ingress gateway's IP address, ie guestbook.172-17-50-190.nip.io returns the IP address of 172.17.50.190 which is the SMM IstioMeshGateway IP created in my Lab.  You will need to update these hostnamnes to match your Kubernetes cluster's IstioMeshGateway IP.  
 
-This is documented here 
+This is documented here  
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/  
 https://smm-docs.eticloud.io/docs/dashboard/gateways/routes-traffic-management/  
 https://nip.io  
@@ -48,11 +48,11 @@ https://nip.io
 
 To create the template VirtualServices
 ```
-kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-hosts.yaml
-kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/smm-ingress/virtualservices-ports.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-ingress/virtualservices-hosts.yaml
+kubectl apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-ingress/virtualservices-ports.yaml
 ```
 
-Now to update the virtualservices using Hostnames will require additional steps.  First fetch the SMM ingressgateway IP address;
+Now to update the virtualservices using Hostnames will require additional steps.  First fetch the Calisti ingressgateway IP address;  
 ```
 kubectl -n smm-custom-meshgateway get svc custom-gw
 ```
