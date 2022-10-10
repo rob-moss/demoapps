@@ -4,3 +4,9 @@
 FROM gcr.io/google-samples/microservices-demo/frontend:v0.3.6
 
 ADD ../styles-blue.css /src/static/styles/styles.css
+
+EXPOSE 8080/tcp
+
+ENV "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "GOTRACEBACK=single"
+
+ENTRYPOINT "/src/server"
