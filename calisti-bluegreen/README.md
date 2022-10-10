@@ -18,7 +18,7 @@ We create the Calisti gateway using steps #2 and onwards from here https://githu
 ```
 kubectl create ns onlineboutique-blue
 smm sp ai on onlineboutique-blue
-kubectl -n onlineboutique-blue apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
+kubectl -n onlineboutique-blue apply -f //raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-blue.yaml
 ```
 
 
@@ -27,24 +27,7 @@ kubectl -n onlineboutique-blue apply -f https://raw.githubusercontent.com/rob-mo
 ```
 kubectl create ns onlineboutique-green
 smm sp ai on onlineboutique-green
-kubectl -n onlineboutique-green apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
-```
-
-## Copy the Blue and Green stylesheets
-
-The stylesheets below will colour the text from dark Gray to dark Blue and Green respectively
-
-```
-cd /tmp
-wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-blue.css
-wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-green.css
-
-
-pod=$(kubectl -n onlineboutique-blue get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
-kubectl cp /tmp/styles-blue.css onlineboutique-blue/$pod:/src/static/styles/styles.css
-
-pod=$(kubectl -n onlineboutique-green get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
-kubectl cp /tmp/styles-green.css onlineboutique-green/$pod:/src/static/styles/styles.css
+kubectl -n onlineboutique-green apply -f //raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-green.yaml
 ```
 
 ## Add the Gateways
@@ -78,3 +61,29 @@ Open a browser to the hostnames below (replace x-x-x-x with the IP of your Calis
 * onlineboutique-blue.x-x-x-x.nip.ip
 * onlineboutique-green.x-x-x-x.nip.ip
 * onlineboutique-bgprod.x-x-x-x.nip.ip
+
+   
+  
+  
+
+
+---
+
+# Manual steps, no longer necessary
+
+## Copy the Blue and Green stylesheets
+
+The stylesheets below will colour the text from dark Gray to dark Blue and Green respectively
+
+```
+cd /tmp
+wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-blue.css
+wget -q https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/styles-green.css
+
+
+pod=$(kubectl -n onlineboutique-blue get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
+kubectl cp /tmp/styles-blue.css onlineboutique-blue/$pod:/src/static/styles/styles.css
+
+pod=$(kubectl -n onlineboutique-green get pod -l app=frontend -o jsonpath='{.items..metadata.name}')
+kubectl cp /tmp/styles-green.css onlineboutique-green/$pod:/src/static/styles/styles.css
+```
