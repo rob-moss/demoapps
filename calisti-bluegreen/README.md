@@ -18,7 +18,7 @@ We create the Calisti gateway using steps #2 and onwards from here https://githu
 ```
 kubectl create ns onlineboutique-blue
 smm sp ai on onlineboutique-blue
-kubectl -n onlineboutique-blue apply -f //raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-blue.yaml
+kubectl -n onlineboutique-blue apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-blue.yaml
 ```
 
 
@@ -27,7 +27,7 @@ kubectl -n onlineboutique-blue apply -f //raw.githubusercontent.com/rob-moss/dem
 ```
 kubectl create ns onlineboutique-green
 smm sp ai on onlineboutique-green
-kubectl -n onlineboutique-green apply -f //raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-green.yaml
+kubectl -n onlineboutique-green apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/calisti-bluegreen/onlineboutique-green.yaml
 ```
 
 ## Add the Gateways
@@ -63,7 +63,9 @@ Open a browser to the hostnames below (replace x-x-x-x with the IP of your Calis
 * onlineboutique-bgprod.x-x-x-x.nip.ip
 
    
-  
+## Upgrade the Green app
+
+We will then upgrade the green app from v0.3.6 to v0.3.7 by editing the frontend Deployment image: statement
   
 
 
