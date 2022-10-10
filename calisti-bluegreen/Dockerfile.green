@@ -1,4 +1,4 @@
-# Dockerfile to create the Green image
+# Dockerfile to create the Green image version frontend:v0.3.6
 # Repalce the styles.css file with one that has set the text colour to dark Green
 
 FROM gcr.io/google-samples/microservices-demo/frontend:v0.3.6
