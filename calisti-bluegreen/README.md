@@ -93,7 +93,9 @@ Demo complete
 
 ## Docker build commands
 
-Building the Docker images
+Building the Docker images. These were the steps used to create the images.  
+If you are rebuilding the images for your own image repo, please update the tags  
+
 ```
 cd ~/git/demoapps/calisti-bluegreen
 
