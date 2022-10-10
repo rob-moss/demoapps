@@ -15,6 +15,7 @@ This guide was written and tested using IKS 1.21.11 and Calisti version 1.8.2
 
 * Two Kubernetes clusters - ideally one on-prem, one in AWS or GCP
 * Calisti version 1.8.2 or later deployed on the on-prem Kubernetes cluster
+* Calisti / SMM commandline tool downloaded (download from Calisti login page)
 * Calisti ControlPlane deployed on the on-prem cluster
 * AWS/GCP cluster without Calisti deployed (this will become the Peer cluster)
 * Calisti ControlPlane cluster attach the Peer cluster (https://smm-docs.eticloud.io/docs/installation/multi-cluster/)  
