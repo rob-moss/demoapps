@@ -1,5 +1,5 @@
-# Dockerfile to create the Blue image
-# Repalce the styles.css file with one that has set the text colour to dark Blue
+# Dockerfile to create the Green image
+# Repalce the styles.css file with one that has set the text colour to dark Green
 
 FROM gcr.io/google-samples/microservices-demo/frontend:v0.3.6
 
