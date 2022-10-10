@@ -8,7 +8,7 @@ In order to run these Demo Apps and the demoapp it is recommended to build a Kub
 
 
 
-SMM documentation is avialable here
+Documentation is avialable here
 https://smm-docs.eticloud.io/docs/dashboard/gateways/create-ingress-gateway/
 
 
