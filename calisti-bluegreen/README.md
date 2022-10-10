@@ -67,6 +67,13 @@ Open a browser to the hostnames below (replace x-x-x-x with the IP of your Calis
 
 We will then upgrade the green app from v0.3.6 to v0.3.7 by editing the frontend Deployment image: statement
   
+```
+kubectl -n onlineboutique-green edit deploy frontend
+```
+
+Update the ```image:``` statement with ```romoss/frontend:v0.3.7-green```
+
+Watch the old Pod Terminate and the new one start up
 
 
 ---
