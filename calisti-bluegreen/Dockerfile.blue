@@ -1,4 +1,4 @@
-# Dockerfile to create the Blue image
+# Dockerfile to create the Blue image with frontend:v0.3.6 version
 # Repalce the styles.css file with one that has set the text colour to dark Blue
 
 FROM gcr.io/google-samples/microservices-demo/frontend:v0.3.6
