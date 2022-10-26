@@ -21,11 +21,11 @@ smm sp ai on onlineboutique
 kubectl -n onlineboutique apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/onlineboutique/kubernetes-manifests.yaml
 
 kubectl create ns teastore
-smm sp ai on onlineboutique
+smm sp ai on teastore
 kubectl -n teastore apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/teastore/teastore-clusterip.yaml
 
 kubectl create ns guestbook
-smm sp ai on onlineboutique
+smm sp ai on guestbook
 kubectl -n guestbook apply -f https://raw.githubusercontent.com/rob-moss/demoapps/main/guestbook/guestbook-all-in-one-clusterip.yaml
 ```
 
