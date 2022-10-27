@@ -1,8 +1,12 @@
 # Create a Calisti Istio Mesh Gateway
 
-The purpose of this is to create a new Calisti Ingress Gateway with a public IP LoadBalancer address that can be used to manage traffic based on IP address, HTTP host header and TCP ports
+## Use Case
 
-In order to run these Demo Apps and the demoapp it is recommended to build a Kubernetes cluster with the following specs
+The purpose of this demo is to demonstrate how a Calisti Ingress Gateway with a public IP LoadBalancer address can be used to manage traffic based on IP address, HTTP host header and TCP ports
+
+Three different applications are deployed into their own namespaces, each have different looking user interfaces.  This is to clearly show the Calisti ingress rules working.  The three different applications can be substituted with different versions of the same application in different environments like Prod, Dev and Test.
+
+In order to run these Demo Apps and the Calisti ingress gateway it is recommended to build a Kubernetes cluster with the following specs
 * 1 or 3 ControlPlane nodes with at least 2 vCPU and 16 GB RAM
 * 3 Worker Nodes with at least 8 vCPU and 32GB RAM
 
