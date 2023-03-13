@@ -12,7 +12,7 @@ metadata:
   namespace: smm-custom-meshgateway
 spec:
   istioControlPlane:
-    name: cp-v111x
+    name: cp-v115x
     namespace: istio-system
   runAsRoot: true
   service:
